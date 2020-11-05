@@ -39,7 +39,7 @@
         prepend-icon="mdi-newspaper"
       >
         <template v-slot:activator>
-          <v-list-item-title>Cadastros</v-list-item-title>
+         <router-link :to="{ name: 'Home'}"><v-list-item-title>Cadastros</v-list-item-title></router-link>
         </template>
 
         <v-list-group
@@ -94,7 +94,7 @@
         prepend-icon="mdi-memory"
       >
         <template v-slot:activator>
-          <v-list-item-title>Configuração</v-list-item-title>
+          <router-link :to="{ name: 'About'}"><v-list-item-title>Configuração</v-list-item-title></router-link>
         </template>
 
         <v-list-group
