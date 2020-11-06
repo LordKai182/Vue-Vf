@@ -2,44 +2,80 @@
  <div style="padding:10px;margin-top:40px;">
 <el-form ref="form" class="demo-form-inline" label-width="auto" size="mini">
   <div style="display:flex;">
-  <el-form-item label="Código">
-    <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.codigo"></el-input>
+  <el-form-item label="Código" style="width:120px;">
+    <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.codigo"></el-input>
   </el-form-item>
-   <el-form-item label="CNPJ">
-    <el-input style="width:140px;" v-model="sizeForm.cnpj" placeholder="000.00.000/0000-00"></el-input>
+   <el-form-item label="CNPJ" style="width:280px;">
+    <el-input style="width:160px;" v-model="sizeForm.Cliente.cnpjCpf" placeholder="000.00.000/0000-00"></el-input>
   </el-form-item>
-    <el-form-item label="Razão Social">
-    <el-input style="width:520px;" v-model="sizeForm.razao"></el-input>
+    <el-form-item style="width:220px;" label="Insc. Estadual">
+    <el-input style="width:110px;" v-model="sizeForm.Cliente.inscricaoEstadual"></el-input>
+  </el-form-item>
+    <el-form-item style="margin-left:5px" label="Insc. Municipal">
+    <el-input style="width:110px;" v-model="sizeForm.Cliente.inscricaoMunicipal"></el-input>
   </el-form-item>
   </div>
-  
-  <el-form-item label="Activity zone">
-    <el-select v-model="sizeForm.region" placeholder="please select your zone">
-      <el-option label="Zone one" value="shanghai"></el-option>
-      <el-option label="Zone two" value="beijing"></el-option>
+  <el-form-item style="margin-left:5px" label="Razão Social">
+    <el-input style="width:70%;" v-model="sizeForm.Cliente.razaoSocial"></el-input>
+  </el-form-item>
+  <el-form-item style="margin-left:5px" label="Nome Fantasia">
+    <el-input style="width:70%;" v-model="sizeForm.Cliente.nomeFantasia"></el-input>
+  </el-form-item>
+   <div style="display:flex;">
+  <el-form-item style="width:280px;" label="Endereço">
+    <el-input style="width:200px;" v-model="sizeForm.Cliente.enderecos[0].logradouro"></el-input>
+  </el-form-item>
+  <el-form-item style="width:180px;" label="Telefone">
+    <el-input style="width:130px;;" v-model="sizeForm.Cliente.telefone"></el-input>
+  </el-form-item>
+  <el-form-item label="UF" style="width:150px;">
+    <el-input style="width:60px;;" v-model="sizeForm.Cliente.enderecos[0].uf"></el-input>
+  </el-form-item>
+   <el-form-item style="margin-left:5px" label="Cidade">
+    <el-input style="width:160px;;" v-model="sizeForm.Cliente.enderecos[0].cidade"></el-input>
+  </el-form-item>
+   </div>
+   <div style="display:flex;">
+     <el-form-item label="Código Atividade">
+    <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.atividade.codigo"></el-input>
+  </el-form-item>
+   <el-form-item style="margin-left:5px" label="Atividade">
+    <el-input style="width:660px;" v-model="sizeForm.Cliente.atividade.descricao"></el-input>
+  </el-form-item>
+   </div>
+     <div style="display:flex;">
+     <el-form-item label="Código Segmento">
+    <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.segmento.codigo"></el-input>
+  </el-form-item>
+   <el-form-item style="margin-left:5px" label="Segmento">
+    <el-input style="width:660px;" v-model="sizeForm.Cliente.segmento.descricao"></el-input>
+  </el-form-item>
+   </div>
+   <div style="display:flex">
+   <el-form-item v-model="sizeForm.Cliente.crt" label="CRT">
+    <el-select  placeholder="Selecione o CRT">
+      <el-option label="Simples Nacional" value="1"></el-option>
+      <el-option label="Lucro Real" value="2"></el-option>
     </el-select>
   </el-form-item>
-  <el-form-item label="Activity time">
-    <el-col :span="11">
-      <el-date-picker type="date" placeholder="Pick a date" v-model="sizeForm.date1" style="width: 100%;"></el-date-picker>
-    </el-col>
-    <el-col class="line" :span="2">-</el-col>
-    <el-col :span="11">
-      <el-time-picker placeholder="Pick a time" v-model="sizeForm.date2" style="width: 100%;"></el-time-picker>
-    </el-col>
+    <el-form-item label="Data Cadastro">
+    <el-input style="width:160px;" v-model="sizeForm.Cliente.dataCadastro"></el-input>
   </el-form-item>
-  <el-form-item label="Activity type">
-    <el-checkbox-group v-model="sizeForm.type">
-      <el-checkbox-button label="Online activities" name="type"></el-checkbox-button>
-      <el-checkbox-button label="Promotion activities" name="type"></el-checkbox-button>
-    </el-checkbox-group>
+     <el-form-item label="Tipo Empresa">
+    <el-input style="width:40px;"  v-model="sizeForm.Cliente.tipoEmpresa"></el-input>
   </el-form-item>
-  <el-form-item label="Resources">
-    <el-radio-group v-model="sizeForm.resource" size="medium">
-      <el-radio border label="Sponsor"></el-radio>
-      <el-radio border label="Venue"></el-radio>
-    </el-radio-group>
+   </div>
+     <div style="display:flex">
+    <el-form-item label="Alterado Em">
+    <el-input style="width:160px;" v-model="sizeForm.Cliente.dataUltimaAlteracao"></el-input>
   </el-form-item>
+     <el-form-item label="Última Compra Em">
+    <el-input style="width:160px;"  v-model="sizeForm.Cliente.dataUltimaCompra"></el-input>
+  </el-form-item>
+   <el-form-item label="Cadastro/Alterado Por">
+    <el-input style="width:140px;"  v-model="sizeForm.Cliente.usuario.nome"></el-input>
+  </el-form-item>
+   </div>
   <el-form-item size="large">
     <el-button type="primary" @click="logar">Create</el-button>
     <el-button @click="teclouEnter">Cancel</el-button>
@@ -47,11 +83,16 @@
 </el-form>
  </div>
 </template>
-<script>
-export default {
-     data() {
-      return {
-         datad: JSON.stringify({"login":"SAG","senha":"708015azx"}),
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import {Cliente} from '../classes/cliente'
+import axios from 'axios'
+import TutorialDataService from '../service/sag-service'
+
+ export default Vue.extend({
+    name: 'DadosCliente',
+    data: () => ({
+       datad: JSON.stringify({"login":"SAG","senha":"708015azx"}),
 
       config: {
       method: 'post',
@@ -68,31 +109,20 @@ export default {
         },
         keywords: '',
          sizeForm: {
-          codigo: '1',
-          razao: '',
-          cnpj: '',
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+           Cliente: Cliente
         }
-      }
-    },
+
+    }),
     methods: {
-        selecionarCliente(){
+       selecionarCliente(){
+                
                 this.config.url = 'http://localhost:80/api/Cliente/SelecionarCliente'
-                this.config.data = JSON.stringify({"codigo":this.sizeForm.codigo});
-                this.config.headers = {"Authorization" : `Bearer ${this.usuario.token}`,   'Accept': 'application/json', 'Content-Type': 'application/json' }
+                this.config.data = JSON.stringify({"codigo":this.sizeForm.Cliente.codigo});
+                this.config.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization' : `Bearer ${this.usuario.token}`  }
                 this.axios(this.config)
          .then( (response) => {
-         this.sizeForm.codigo  = response.data.data.codigo
-         this.sizeForm.razao  = response.data.data.razaoSocial
-         this.sizeForm.cnpj  = response.data.data.cnpjCpf
-         console.log(JSON.stringify( response.data.data.codigo));
+         this.sizeForm.Cliente  = response.data.data
+         console.log(JSON.stringify( response.data.data));
 
          })
           .catch(function (error) {
@@ -100,10 +130,9 @@ export default {
           });
 
         },
-
-
-        logar(){
-          this.axios(this.config)
+            logar(){
+          
+          TutorialDataService.logar(this.config)
          .then( (response) => {
            this.usuario.token = response.data.accessToken;
          console.log(JSON.stringify(this.usuario.token));
@@ -118,16 +147,6 @@ export default {
         console.log(response.data)
           })
         },
-      onSubmit() {
-        console.log('submit!');
-      },
-      queryForKeywords: function(event) {
-        
-        if (this.keywords.length > 2) {
-            console.log("keywords value: " + this.keywords);
-            console.log("event value: " + event.currentTarget.value);
-    }
-      }
-    }
-}
+    },
+ })
 </script>>

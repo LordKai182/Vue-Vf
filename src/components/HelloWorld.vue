@@ -49,7 +49,7 @@
         >
           <template v-slot:activator>
             <v-list-item-content>
-              <v-list-item-title>Admin</v-list-item-title>
+              <v-list-item-title>Clientes</v-list-item-title>
             </v-list-item-content>
           </template>
 
@@ -551,8 +551,13 @@
     data: () => ({
       drawer: null,
       admins: [
-        ['Management', 'mdi-account-multiple-outline'],
-        ['Settings', 'mdi-cog-outline'],
+        ['Manutenção de Cadastros', 'mdi-account-multiple-outline'],
+        ['Atividades', 'mdi-cog-outline'],
+        ['Segmentos', 'mdi-cog-outline'],
+        ['Dados de Faturamento', 'mdi-cog-outline'],
+        ['Preços Especias para Clientes', 'mdi-cog-outline'],
+        ['Reajuste de Preços de Clientes', 'mdi-cog-outline'],
+        ['Clientes Bloqueados', 'mdi-cog-outline'],
       ],
       cruds: [
         ['Create', 'mdi-plus-outline'],
