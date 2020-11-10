@@ -2,16 +2,8 @@ import axios from 'axios'
 
 
 class TutorialDataService {
-    selecionarCliente(config: any): any{
-         axios(config)
-         .then( (response) => {
-         console.log(JSON.stringify("Resposta" + response.data.data));
-         return  response.data.data
-        })
-  .catch(function (error) {
-  console.log(error);
-  });
-
+    selecionarCliente(config: any){
+      return axios(config)
 }
 logar(config: any){
     return axios(config)

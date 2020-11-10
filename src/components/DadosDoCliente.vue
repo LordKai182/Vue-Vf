@@ -1,9 +1,9 @@
 <template>
  <div style="padding:10px;margin-top:40px;">
-<el-form ref="form" class="demo-form-inline" label-width="auto" size="mini">
+<el-form ref="form" class="demo-form-inline" label-width="auto" size="mini"  v-loading="loading">
   <div style="display:flex;">
-  <el-form-item label="Código" style="width:120px;">
-    <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.codigo"></el-input>
+  <el-form-item label="Código" style="width:120px;" >
+    <el-input style="width:60px;" class="color-cod" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.codigo"></el-input>
   </el-form-item>
    <el-form-item label="CNPJ" style="width:280px;">
     <el-input style="width:160px;" v-model="sizeForm.Cliente.cnpjCpf" placeholder="000.00.000/0000-00"></el-input>
@@ -25,7 +25,7 @@
   <el-form-item style="width:280px;" label="Endereço">
     <el-input style="width:200px;" v-model="sizeForm.Cliente.enderecos[0].logradouro"></el-input>
   </el-form-item>
-  <el-form-item style="width:180px;" label="Telefone">
+  <el-form-item style="width:200px;" label="Telefone">
     <el-input style="width:130px;;" v-model="sizeForm.Cliente.telefone"></el-input>
   </el-form-item>
   <el-form-item label="UF" style="width:150px;">
@@ -36,19 +36,19 @@
   </el-form-item>
    </div>
    <div style="display:flex;">
-     <el-form-item label="Código Atividade">
+     <el-form-item label="Código Atividade" style="width:150px;">
     <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.atividade.codigo"></el-input>
   </el-form-item>
-   <el-form-item style="margin-left:5px" label="Atividade">
-    <el-input style="width:660px;" v-model="sizeForm.Cliente.atividade.descricao"></el-input>
+   <el-form-item style="margin-left:5px" label="Atividade" >
+    <el-input style="width:640px;" v-model="sizeForm.Cliente.atividade.descricao"></el-input>
   </el-form-item>
    </div>
      <div style="display:flex;">
-     <el-form-item label="Código Segmento">
+     <el-form-item label="Código Segmento"  style="width:150px;">
     <el-input style="width:60px;" @keyup.enter.native="selecionarCliente" v-model="sizeForm.Cliente.segmento.codigo"></el-input>
   </el-form-item>
    <el-form-item style="margin-left:5px" label="Segmento">
-    <el-input style="width:660px;" v-model="sizeForm.Cliente.segmento.descricao"></el-input>
+    <el-input style="width:640px;" v-model="sizeForm.Cliente.segmento.descricao"></el-input>
   </el-form-item>
    </div>
    <div style="display:flex">
@@ -92,6 +92,7 @@ import TutorialDataService from '../service/sag-service'
  export default Vue.extend({
     name: 'DadosCliente',
     data: () => ({
+       loading: false,
        datad: JSON.stringify({"login":"SAG","senha":"708015azx"}),
 
       config: {
@@ -115,14 +116,15 @@ import TutorialDataService from '../service/sag-service'
     }),
     methods: {
        selecionarCliente(){
-                
+                this.loading = true;
                 this.config.url = 'http://localhost:80/api/Cliente/SelecionarCliente'
                 this.config.data = JSON.stringify({"codigo":this.sizeForm.Cliente.codigo});
                 this.config.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization' : `Bearer ${this.usuario.token}`  }
-                this.axios(this.config)
+          TutorialDataService.selecionarCliente(this.config)
          .then( (response) => {
          this.sizeForm.Cliente  = response.data.data
          console.log(JSON.stringify( response.data.data));
+          this.loading = false;
 
          })
           .catch(function (error) {
@@ -150,3 +152,8 @@ import TutorialDataService from '../service/sag-service'
     },
  })
 </script>>
+<style scoped>
+.color-cod{
+  background-color: #F1DF55!important;
+}
+</style>

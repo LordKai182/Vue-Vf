@@ -34,12 +34,16 @@
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import DadosDoCliente from '@/components/DadosDoCliente';
+import GridSag from '../componentes-genericos/grid-sag';
+import FormSag from '../componentes-genericos/formulario-generico';
 import { validationMixin } from 'vuelidate';
 import { required, maxLength, email } from 'vuelidate/lib/validators'
 @Component({
   components: {
     HelloWorld,
-    DadosDoCliente
+    DadosDoCliente,
+    GridSag,
+    FormSag
   },
 })
 export default class Home extends Vue {
@@ -48,8 +52,8 @@ export default class Home extends Vue {
         tab: null,
         items: [
           { tab: 'Dados do Cliente', content: 'DadosDoCliente' },
-          { tab: 'Ponto de Entrega', content: 'q'},
-          { tab: 'Dados de Faturamento', content: 'q' },
+          { tab: 'Ponto de Entrega', content: 'GridSag'},
+          { tab: 'Dados de Faturamento', content: 'FormSag' },
           { tab: 'Preços do Cliente', content:'q'},
         ],
       }
