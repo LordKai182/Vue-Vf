@@ -1,16 +1,23 @@
 <template>
-
- <div style="padding:10px;margin-top:20px;">
-  <div style="margin-bottom: 20px">
-    <el-button type="primary">Cadastrar Novo Endereço</el-button>
-    <el-button type="info">Cadastrar um Contato</el-button>
-    <el-button  type="warning">Editar um Endereço</el-button>
-     <el-button type="danger">Excluir um Endereço</el-button>
+ <div>
+ <el-dialog title="cadastro de Endereço" :visible.sync="outerVisible" width="100%" >
+ <FormSag :propsMessage="linha"/>
+ </el-dialog>
+ 
+  <div style="margin-bottom:10px">
+     <el-row>
+  <el-button icon="el-icon-search" circle></el-button>
+  <el-button @click="outerVisible = true" type="primary" icon="el-icon-plus" circle></el-button>
+  <el-button type="success" icon="el-icon-edit" circle></el-button>
+  <el-button type="info" icon="el-icon-message" circle></el-button>
+  <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+  <el-button type="danger" icon="el-icon-delete" circle></el-button>
+</el-row>
   </div>
 <v-card>
   <el-table
     :data="tableData"
-    style="width: 100%">
+    style="width:100%">
     <el-table-column type="expand">
       <template slot-scope="props">
         <p>State: {{ props.row.state }}</p>
@@ -20,42 +27,41 @@
       </template>
     </el-table-column>
     <el-table-column
-      label="Data Cadastro"
-      prop="date">
+      label="Endereço"
+      prop="enderecoBase">
     </el-table-column>
     <el-table-column
-      label="Endereço"
-      prop="name">
+      label="Tipo de Ponto"
+      >
+      <template slot-scope="scope">
+       <div v-if="scope.row.tipoPonto == 1">Fiscal</div>
+       <div v-if="scope.row.tipoPonto == 2">Cobranca</div>
+       <div v-if="scope.row.tipoPonto == 3">Paciente</div>
+       <div v-if="scope.row.tipoPonto == 4">PontoDeEntrega</div>
+       <div v-if="scope.row.tipoPonto == 5">Locatario</div>
+       <div v-if="scope.row.tipoPonto == 6">Fornecedor</div>
+      </template>
     </el-table-column>
   </el-table>
 </v-card>
  </div>
 </template>
-<script lang="ts">
+<script>
+
 import { Vue } from 'vue-property-decorator'
+import FormSag from './formulario-generico';
+import {Cliente} from '@/classes/cliente'
+
 export default Vue.extend({
     name: 'GridSag',
+     components: {
+     FormSag,
+  },
     data: () => ({
-        
-        tableData: [{
-          date: '2016-05-03',
-          name: 'Rua do Teste',
-          address: 'No. 189, Grove St, Los Angeles'
-        }, {
-          date: '2016-05-02',
-          name: 'Teste 2',
-          address: 'No. 189, Grove St, Los Angeles'
-        }, {
-          date: '2016-05-04',
-          name: 'JP Morgan',
-          address: 'No. 189, Grove St, Los Angeles'
-        }, {
-          date: '2016-05-01',
-          name: 'Tomas Edson',
-          address: 'No. 189, Grove St, Los Angeles'
-        }],
+        dialogTableVisible: false,
+        outerVisible: false,
+        tableData: Cliente.enderecos,
         search: '',
-      
     }),
       methods: {
         handleEdit(index, row) {

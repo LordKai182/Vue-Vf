@@ -20,9 +20,9 @@
         :key="item.tab"
       >
         <v-card flat>
-          <!-- <v-card-text>{{ item.content }}</v-card-text> -->
-          <component v-bind:is="item.content" />
-
+         <div style="padding:10px;margin-top:40px;">
+          <component v-bind:is="item.content" :propsMessage="linha" :entrada="cli" />
+         </div>
         </v-card>
       </v-tab-item>
     </v-tabs-items>
@@ -38,6 +38,8 @@ import GridSag from '../componentes-genericos/grid-sag';
 import FormSag from '../componentes-genericos/formulario-generico';
 import { validationMixin } from 'vuelidate';
 import { required, maxLength, email } from 'vuelidate/lib/validators'
+import {Cliente} from '@/classes/cliente'
+import {FrmDadosCliente} from '@/formularios/DadosCliente'
 @Component({
   components: {
     HelloWorld,
@@ -50,6 +52,8 @@ export default class Home extends Vue {
   data () {
       return {
         tab: null,
+        cli:Cliente,
+          linha:FrmDadosCliente,
         items: [
           { tab: 'Dados do Cliente', content: 'DadosDoCliente' },
           { tab: 'Ponto de Entrega', content: 'GridSag'},

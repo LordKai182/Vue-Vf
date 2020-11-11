@@ -1,11 +1,14 @@
 <template>
 <div style="display:flex;margin:10px;">
    <div >
-    <v-card style="height:92vh;!important;">
+    <v-card style="height:92vh;!important;font-size: 1.3em !important;">
       <v-navigation-drawer 
           v-model="drawer"
-        permanent
+        app="true"
+        floating="true"
+        expand-on-hover="true"
         hide-overlay
+        width="350"
       >
         <v-list>
           <v-list-item class="px-2">
@@ -39,7 +42,7 @@
         prepend-icon="mdi-newspaper"
       >
         <template v-slot:activator>
-         <v-list-item-title><router-link :to="{ name: 'Home'}">Cadastros</router-link></v-list-item-title>
+         <v-list-item-title><router-link style="text-decoration: none;  "  :to="{ name: 'Home'}">Cadastros</router-link></v-list-item-title>
         </template>
 
         <v-list-group
@@ -94,7 +97,7 @@
         prepend-icon="mdi-memory"
       >
         <template v-slot:activator>
-          <v-list-item-title><router-link :to="{ name: 'About'}">Configuração</router-link></v-list-item-title>
+          <v-list-item-title><router-link style="text-decoration: none;  " :to="{ name: 'About'}">Configuração</router-link></v-list-item-title>
         </template>
 
         <v-list-group
@@ -536,7 +539,7 @@
     </v-card>
    
   </div>
-   <div style="margin-left:10px;width:100%;!important; margin-left:10px;">
+   <div style="margin-left:3%;width:100%">
     <router-view/>
     </div>
 </div>
