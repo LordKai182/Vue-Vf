@@ -1,6 +1,20 @@
 <template>
  <div>
- <v-card>
+ <el-dialog title="cadastro de Endereço" :visible.sync="outerVisible" width="80%" >
+ <FormSag :propsMessage="ponto" :entrada="enrtada"/>
+ </el-dialog>
+ 
+  <div style="margin-bottom:10px">
+     <el-row>
+  <el-button icon="el-icon-search" circle></el-button>
+  <el-button @click="outerVisible = true" type="primary" icon="el-icon-plus" circle></el-button>
+  <el-button type="success" icon="el-icon-edit" circle></el-button>
+  <el-button type="info" icon="el-icon-message" circle></el-button>
+  <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+  <el-button type="danger" icon="el-icon-delete" circle></el-button>
+</el-row>
+  </div>
+<v-card>
   <el-table
     :data="tableData"
     style="width:100%">
@@ -35,11 +49,11 @@
 <script>
 
 import { Vue } from 'vue-property-decorator'
-import FormSag from './formulario-generico';
+import FormSag from '@/componentes-genericos/formulario-generico';
 import {Cliente} from '@/classes/cliente'
-
+import {FrmPontoDeEntrega} from '@/formularios/PontoDeEntrega'
 export default Vue.extend({
-    name: 'GridSag',
+    name: 'PontoEntrega',
      components: {
      FormSag,
   },
@@ -47,6 +61,8 @@ export default Vue.extend({
         dialogTableVisible: false,
         outerVisible: false,
         tableData: Cliente.enderecos,
+        ponto: FrmPontoDeEntrega,
+        enrtada: Cliente.enderecos[1],
         search: '',
     }),
       methods: {

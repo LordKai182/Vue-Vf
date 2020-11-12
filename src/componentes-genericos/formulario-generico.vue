@@ -42,8 +42,22 @@
   </el-form-item>
    <el-form-item :label="item.label" v-if="item.type == 'date'">
     <el-col :span="11">
-      <el-date-picker type="date" placeholder="Selecione" :style="item.model"></el-date-picker>
+      <el-date-picker type="date" placeholder="Selecione" :style="item.style" v-model="entrada[item.model]"></el-date-picker>
     </el-col>
+  </el-form-item>
+   <el-form-item :label="item.label"  v-if="item.type == 'radio'" :style="item.style">
+    <el-radio-group v-model="entrada[item.model]">
+      <el-radio 
+      :label="opt.value" 
+      :value="opt.value"
+      v-for="opt in item.options" 
+      :key="opt.value" >
+      {{opt.label}}
+      </el-radio>
+    </el-radio-group>
+  </el-form-item>
+  <el-form-item v-if="item.type == 'check'" :style="item.style">
+   <el-checkbox v-model="entrada[item.model]">{{item.label}}</el-checkbox>
   </el-form-item>
   </div>
   </div>
