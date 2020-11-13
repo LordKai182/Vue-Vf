@@ -1,7 +1,7 @@
 <template>
  <div>
-  
-<el-form  class="demo-form-inline" label-width="auto" size="mini" >
+
+<el-form label-width="auto" size="mini" >
   <div style="display:flex;" v-for="line in propsMessage" 
     :key="line.id">
   <div v-for="item in line.teste" :key="item.id" >

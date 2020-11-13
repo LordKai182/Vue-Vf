@@ -4,7 +4,24 @@
   color="blue"
   dense
   flat
-></v-app-bar>
+>
+<div style="margin-left:4%;margin-top:10px;;">
+ <el-badge :value="notifications.length" class="item">
+ <el-dropdown trigger="click">
+  <span class="el-dropdown-link" style=" color:#fff;">
+    {{cli.nomeFantasia}}
+    <i class="el-icon-warning" style="font-size:70px;"></i>
+  </span>
+  <el-dropdown-menu slot="dropdown">
+    <el-dropdown-item class="clearfix" v-for="item in notifications" :key="item.message">
+      {{item.message}}
+    </el-dropdown-item>
+  
+  </el-dropdown-menu>
+</el-dropdown>
+ </el-badge>
+</div>
+</v-app-bar>
       <HelloWorld/>
       <v-card id="create">
   
@@ -88,6 +105,12 @@ export default Vue.extend({
       transition: 'slide-y-reverse-transition',
     }),
      computed: {
+      cli(){
+         return this.$store.state.clienteStore;
+      },
+      notifications(){
+         return this.$store.state.notifications
+      },
       activeFab() {
         switch (this.tabs) {
           case 'one': return { class: 'purple', icon: 'account_circle' }

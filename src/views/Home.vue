@@ -41,13 +41,15 @@ import {Cliente} from '@/classes/cliente'
 import {FrmDadosCliente} from '@/formularios/DadosCliente'
 import PontoEntrega from '@/components/PontoDeEntrega'
 import DadosFaturamento from '@/components/DadosFaturamento'
+import PrecoCliente from '@/components/PrecoCliente'
 @Component({
   components: {
     HelloWorld,
     DadosDoCliente,
     PontoEntrega,
     FormSag,
-    DadosFaturamento
+    DadosFaturamento,
+    PrecoCliente
   },
 })
 export default class Home extends Vue {
@@ -60,7 +62,7 @@ export default class Home extends Vue {
           { tab: 'Dados do Cliente', content: 'DadosDoCliente' },
           { tab: 'Ponto de Entrega', content: 'PontoEntrega'},
           { tab: 'Dados de Faturamento', content: 'DadosFaturamento' },
-          { tab: 'Preços do Cliente', content:'q'},
+          { tab: 'Preços do Cliente', content:'PrecoCliente'},
         ],
       }
     }

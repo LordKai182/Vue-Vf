@@ -1,21 +1,21 @@
 <template>
  <div>
- <FormSag :propsMessage="faturamento" :entrada="enrtada"/>
+ <FormSag :propsMessage="preco" :entrada="enrtada"/>
  </div>
 </template>
 <script>
 import { Vue } from 'vue-property-decorator'
 import FormSag from '@/componentes-genericos/formulario-generico';
 import {Cliente} from '@/classes/cliente'
-import {FrmDadosFaturamento} from '@/formularios/DadosFaturamento'
+import {FrmDadosFaturamento} from '@/formularios/PrecoCliente'
 
 export default Vue.extend({
-     name: 'DadosFaturamento',
+     name: 'PrecoCliente',
      components: {
      FormSag,
   },
     data: () => ({
-        faturamento: FrmDadosFaturamento,
+        preco: FrmDadosFaturamento
     }),
      computed:{
       enrtada(){

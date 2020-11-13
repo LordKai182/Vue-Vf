@@ -16,7 +16,7 @@
   </div>
 <v-card>
   <el-table
-    :data="tableData"
+    :data="Enderecos"
     style="width:100%">
     <el-table-column type="expand">
       <template slot-scope="props">
@@ -60,9 +60,7 @@ export default Vue.extend({
     data: () => ({
         dialogTableVisible: false,
         outerVisible: false,
-        tableData: Cliente.enderecos,
         ponto: FrmPontoDeEntrega,
-        enrtada: Cliente.enderecos[1],
         search: '',
     }),
       methods: {
@@ -71,6 +69,14 @@ export default Vue.extend({
       },
       handleDelete(index, row) {
         console.log(index, row);
+      }
+    },
+     computed:{
+      enrtada(){
+        return this.$store.state.clienteStore.enderecos[1];
+      },
+       Enderecos(){
+        return this.$store.getters.Enderecos;
       }
     },
 })
