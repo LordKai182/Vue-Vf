@@ -4,9 +4,9 @@
     <v-card style="height:92vh;!important;font-size: 1.3em !important;">
       <v-navigation-drawer 
           v-model="drawer"
-        app="true"
-        floating="true"
-        expand-on-hover="true"
+        :app="true"
+        :floating="true"
+        :expand-on-hover="true"
         hide-overlay
         width="350"
       >
@@ -35,10 +35,10 @@
           <v-icon>mdi-home</v-icon>
         </v-list-item-icon>
 
-        <v-list-item-title>Dashboard</v-list-item-title>
+        <v-list-item-title><router-link style="text-decoration: none;  " :to="{ name: 'DashBoard'}">Dashboard</router-link></v-list-item-title>
       </v-list-item>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-newspaper"
       >
         <template v-slot:activator>
@@ -46,7 +46,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -93,7 +93,7 @@
         </v-list-group>
       </v-list-group>
       <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-memory"
       >
         <template v-slot:activator>
@@ -101,7 +101,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -148,7 +148,7 @@
         </v-list-group>
       </v-list-group>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-cash-multiple"
       >
         <template v-slot:activator>
@@ -156,7 +156,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -203,7 +203,7 @@
         </v-list-group>
       </v-list-group>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-cart-outline"
       >
         <template v-slot:activator>
@@ -211,7 +211,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -259,7 +259,7 @@
       </v-list-group>
    
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-currency-usd"
       >
         <template v-slot:activator>
@@ -267,7 +267,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -314,7 +314,7 @@
         </v-list-group>
       </v-list-group>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-tablet-ipad"
       >
         <template v-slot:activator>
@@ -322,7 +322,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -369,7 +369,7 @@
         </v-list-group>
       </v-list-group>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-file-pdf"
       >
         <template v-slot:activator>
@@ -377,7 +377,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -424,7 +424,7 @@
         </v-list-group>
       </v-list-group>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-file-outline"
       >
         <template v-slot:activator>
@@ -432,7 +432,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >
@@ -479,7 +479,7 @@
         </v-list-group>
       </v-list-group>
        <v-list-group
-        :value="true"
+        :value="false"
         prepend-icon="mdi-truck"
       >
         <template v-slot:activator>
@@ -487,7 +487,7 @@
         </template>
 
         <v-list-group
-          :value="true"
+          :value="false"
           no-action
           sub-group
         >

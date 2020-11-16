@@ -70,8 +70,10 @@ import store from '@/store'
                 this.config.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization' : `Bearer ${this.getToken}`  }
           TutorialDataService.selecionarCliente(this.config)
          .then( (response) => {
-            console.log(JSON.stringify(response));
-           // this.$store.commit('setarMensagem',response.data.data)
+            console.log(JSON.stringify(response.data.notifications));
+   
+            this.$store.state.notifications = response.data.notifications
+            //this.$store.commit('setarMensagem',response.data.notifications)
           this.loading = false;
 
          })

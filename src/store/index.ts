@@ -10,23 +10,7 @@ export default new Vuex.Store({
   state: {
      clienteStore: Cliente,
      userToken:'',
-      notifications: [
-      {
-        message: "Não existe um caminho de REMESSA configrado na Carteira des Cliente"
-      },
-      {
-       
-        message: "Não existe um caminho de RETORNO configrado na Carteira des Cliente"
-      },
-      {
-       
-        message: " Cliente: SOROGASES COMERCIO E TRANSPORTES LTDA não possui uma Configuração Boleto"
-      },
-      {
-        
-        message: "Cliente SOROGASES COMERCIO E TRANSPORTES LTDA. não possui um Preço x Produto Cadastrado"
-      }
-    ],
+      notifications: [],
      config: {
       method: 'post',
       url: 'http://localhost:80/api/Login/Autenticar',
@@ -52,7 +36,6 @@ export default new Vuex.Store({
 
     },
     setarMensagem(state,payLoad){
-      state.notifications = []
       state.notifications.push(payLoad)
       
     },
