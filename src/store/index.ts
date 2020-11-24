@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
      clienteStore: Cliente,
      userToken:'',
-      notifications: [],
+     notifications: [],
      config: {
       method: 'post',
       url: 'http://localhost:80/api/Login/Autenticar',

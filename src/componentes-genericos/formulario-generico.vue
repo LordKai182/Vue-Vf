@@ -1,10 +1,10 @@
 <template>
  <div>
 
-<el-form label-width="auto" size="mini" >
+<el-form  label-width="auto" :inline="true" label-suffix=" :" class="demo-form-inline" size="mini" label-position="right" >
   <div style="display:flex;" v-for="line in propsMessage" 
     :key="line.id">
-  <div v-for="item in line.teste" :key="item.id" >
+  <div v-for="item in line.teste" :key="item.id">
    <el-form-item   
      v-bind:label="item.label" 
      v-if="item.type == 'input'"
@@ -90,5 +90,8 @@ import { Component, Vue } from 'vue-property-decorator'
 <style scoped>
 .color-cod{
   background-color: #F1DF55!important;
+}
+.adj{
+  width: 0px;
 }
 </style>

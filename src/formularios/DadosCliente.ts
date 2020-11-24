@@ -5,7 +5,6 @@ export const FrmDadosCliente = [
             id:2,
             label:'CPF/CNPJ',
             type: 'input',
-            style:'width:auto;',
             model:'cnpjCpf',
         },
         {

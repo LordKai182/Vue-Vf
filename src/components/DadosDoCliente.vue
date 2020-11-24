@@ -25,7 +25,7 @@ import store from '@/store'
        datad: JSON.stringify({"login":"SAG","senha":"708015azx"}),
        config: {
        method: 'post',
-       url: 'http://localhost:80/api/Login/Autenticar',
+       url: 'http://192.168.0.130:9090/sag/Login/Autenticar',
        headers: { 
        'Accept': 'application/json',
        'Access-Control-Allow-Origin': '*',
@@ -48,7 +48,7 @@ import store from '@/store'
        },
        selecionarCliente(){
                 this.loading = true;
-                this.config.url = 'http://localhost:80/api/Cliente/SelecionarCliente'
+                this.config.url = 'http://192.168.0.130:9090/sag/Cliente/SelecionarCliente'
                 this.config.data = JSON.stringify({"codigo":this.cli.codigo});
                 this.config.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization' : `Bearer ${this.getToken}`  }
           TutorialDataService.selecionarCliente(this.config)
@@ -65,7 +65,7 @@ import store from '@/store'
         },
         menssagens(){
                 this.loading = true;
-                this.config.url = 'http://localhost:80/api/Chamada/ValidarCliente'
+                this.config.url = 'http://192.168.0.130:9090/sag/Chamada/ValidarCliente'
                 this.config.data = JSON.stringify({"codigoCliente":this.cli.codigo});
                 this.config.headers = { 'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization' : `Bearer ${this.getToken}`  }
           TutorialDataService.selecionarCliente(this.config)
@@ -96,7 +96,7 @@ import store from '@/store'
         },
         teclouEnter(){
         
-         this.axios.get("http://localhost:80/api/Chamada/ListaRotas", { headers: {"Authorization" : `Bearer ${this.getToken}`} }).then((response) => {
+         this.axios.get("'http://192.168.0.130:9090/sag/Chamada/ListaRotas", { headers: {"Authorization" : `Bearer ${this.getToken}`} }).then((response) => {
         console.log(response.data)
           })
         },
