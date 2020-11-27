@@ -36,7 +36,7 @@ export default new Vuex.Store({
 
     },
     setarMensagem(state,payLoad){
-      state.notifications.push(payLoad)
+      //state.notifications.push(payLoad)
       
     },
     setarToken(state,payLoad){

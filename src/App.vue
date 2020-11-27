@@ -5,7 +5,7 @@
   dense
   flat
 >
-<div style="margin-left:4%;margin-top:10px;;">
+<!-- <div style="margin-left:4%;margin-top:10px;;">
  <el-badge :value="notifications.length" class="item">
  <el-dropdown trigger="click">
   <span class="el-dropdown-link" style=" color:#fff;">
@@ -20,7 +20,7 @@
   </el-dropdown-menu>
 </el-dropdown>
  </el-badge>
-</div>
+</div> -->
 </v-app-bar>
       <HelloWorld/>
       <v-card id="create">
